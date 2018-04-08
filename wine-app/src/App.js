@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import SideNav from './SideNav';
+import ViewWindow from './ViewWindow';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="SideNav"></div>
-        <div className="ViewWindow"></div>
+        <SideNav />
+        <ViewWindow />
       </div>
     );
   }
