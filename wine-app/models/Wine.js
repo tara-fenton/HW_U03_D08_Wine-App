@@ -12,9 +12,9 @@ Wine.findById = id => db.one("SELECT * FROM wines WHERE id= $1", [id]);
 
 
 // create CCCC
-Wine.create = (name, year, grapes, country, region, description, picture, price) =>
-  db.one("INSERT INTO wines (name, year, grapes, country, region, description, picture, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", [
-    name, year, grapes, country, region, description, picture, price
+Wine.create = (newWine) =>
+  db.one("INSERT INTO wines (name, year, grapes, country, region, description, picture, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id", [
+    newWine.name, newWine.year, newWine.grapes, newWine.country, newWine.region, newWine.description, newWine.picture, newWine.price
   ]);
 
 // findAll RRRRR

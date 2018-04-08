@@ -30,14 +30,13 @@ class SideNav extends Component {
       <div className="SideNav">
         <h1>List of Wines</h1>
 
-        {/* condition statement to check for the movie data loaded */}
+        {/* condition statement to check for the wine data loaded */}
 				{this.state.wineDataLoaded ? (
 					<WineNav wines={this.state.wines} sendWineSelected={this.sendWineSelected} />
 				) : (
 					<p>loading</p>
 				)}
 
-        <button>View All</button>
         <button>Add Wine</button>
       </div>
     );
