@@ -1,5 +1,5 @@
 // WINE MODEL !!!
-const db = require("../database/db-connection");
+const db = require('../database/db-connection');
 
 const Wine = {};
 
@@ -8,17 +8,17 @@ const Wine = {};
 //   db.one("SELECT * FROM wines WHERE name= $1", [name]);
 
 // findOne
-Wine.findById = id => db.one("SELECT * FROM wines WHERE id= $1", [id]);
+Wine.findById = id => db.one('SELECT * FROM wines WHERE id= $1', [id]);
 
 
 // create CCCC
-Wine.create = (newWine) =>
-  db.one("INSERT INTO wines (name, year, grapes, country, region, description, picture, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id", [
-    newWine.name, newWine.year, newWine.grapes, newWine.country, newWine.region, newWine.description, newWine.picture, newWine.price
+Wine.create = newWine =>
+  db.one('INSERT INTO wines (name, year, grapes, country, region, description, picture, price) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id', [
+    newWine.name, newWine.year, newWine.grapes, newWine.country, newWine.region, newWine.description, newWine.picture, newWine.price,
   ]);
 
 // findAll RRRRR
-Wine.findAll = () => db.any("SELECT * FROM wines ORDER BY id");
+Wine.findAll = () => db.any('SELECT * FROM wines ORDER BY id');
 
 // // edit UUUUUU
 // Wine.edit = wine =>
@@ -28,6 +28,6 @@ Wine.findAll = () => db.any("SELECT * FROM wines ORDER BY id");
 //   ]);
 
 // delete DDDDDDD
-Wine.delete = id => db.result("DELETE FROM wines WHERE id = $1", [id]);
+Wine.delete = id => db.result('DELETE FROM wines WHERE id = $1', [id]);
 
 module.exports = Wine;
