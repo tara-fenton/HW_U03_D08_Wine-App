@@ -10,6 +10,7 @@ class App extends Component {
         <SideNav />
         <ViewWindow />
       </div>
+
     );
   }
 }

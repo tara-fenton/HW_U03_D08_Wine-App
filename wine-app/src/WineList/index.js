@@ -1,5 +1,4 @@
 import React from "react";
-import WineList from './WineList';
 
 const WineList = props => {
   return (
