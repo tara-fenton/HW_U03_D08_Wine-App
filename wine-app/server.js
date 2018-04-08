@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require("body-parser");
-const jsonParser = bodyParser.json();
+//const bodyParser = require("body-parser");
+//const jsonParser = bodyParser.json();
 // import models
 const Wine = require("./models/Wine");
 const app = express();
@@ -17,10 +17,30 @@ app.use(function (req, res, next) {
 	next();
 });
 
+// GET list of wines API
 app.get('/api/wines', (request, response) => {
 	Wine.findAll().then(wines => {
-		// render the list of movies
 		response.json(wines)
+	})
+});
+// GET a wine API
+app.get('/api/wines/:id', (request, response) => {
+	const wineId = request.params.id;
+	Wine.findById(wineId).then(wine => {
+		response.json(wine)
+	})
+});
+// POST a wine API
+app.post('/api/wines', (request, response) => {
+	Wine.create(name, year, grapes, country, region, description, picture, price).then(wines => {
+		response.json(wines)
+	})
+});
+// DELETE a wine API
+app.delete('/api/wines/:id', (request, response) => {
+	const wineId = request.params.id;
+	Wine.delete(wineId).then(wine => {
+		response.json(wine)
 	})
 });
 // const jsonParser = bodyParser.json();

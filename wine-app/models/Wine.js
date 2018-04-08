@@ -6,10 +6,10 @@ const Wine = {};
 // // findOne
 // Wine.findByName = name =>
 //   db.one("SELECT * FROM wines WHERE name= $1", [name]);
-//
-// // findOne
-// Wine.findById = id => db.one("SELECT * FROM wines WHERE id= $1", [id]);
-//
+
+// findOne
+Wine.findById = id => db.one("SELECT * FROM wines WHERE id= $1", [id]);
+
 
 // create CCCC
 Wine.create = (name, year, grapes, country, region, description, picture, price) =>
@@ -26,8 +26,8 @@ Wine.findAll = () => db.any("SELECT * FROM wines ORDER BY id");
 //     wine.wineName,
 //     wine.wineId
 //   ]);
-//
-// // delete DDDDDDD
-// Wine.delete = id => db.result("DELETE FROM wines WHERE id = $1", [id]);
+
+// delete DDDDDDD
+Wine.delete = id => db.result("DELETE FROM wines WHERE id = $1", [id]);
 
 module.exports = Wine;
