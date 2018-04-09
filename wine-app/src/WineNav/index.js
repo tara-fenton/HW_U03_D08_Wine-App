@@ -1,19 +1,16 @@
-import React from 'react';
-// import WineNavItem from '../WineNavItem';
+import React from "react";
 
 const WineNav = props => {
-	// Map over movieData array and display individual movie component
-	let wineItems = props.wines.map(wine => (
-		// <WineNavItem movieData={movie} key={movie.id} id={movie.id}
-		// 	sendMovieSelected={props.sendMovieSelected} />
-      <div>{wine.name}</div>
-	));
+  // Map over wines array
+  let wineItems = props.wines.map(wine => (
+    // create div for each wine in nav
+		// call sendWineSelected to send id to SideNav
+    <div key={wine.id} id={wine.id} className="noselect" onClick={props.sendWineSelected}>
+      {wine.name}
+    </div>
+  ));
 
-	return (
-		<div className='wine-list'>
-			{wineItems}
-		</div>
-	);
+  return <div className="wine-list">{wineItems}</div>;
 };
 
 export default WineNav;

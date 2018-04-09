@@ -5,9 +5,10 @@ class SideNav extends Component {
 		super(props);
 		this.state = {
       wineDataLoaded: false,
-			wines: null
+			wines: null,
+      wineSelected: null
 		};
-		// this.sendMovieSelected = this.sendMovieSelected.bind(this);
+		this.sendWineSelected = this.sendWineSelected.bind(this);
 	}
   // check if the component mounted
 	componentDidMount() {
@@ -22,9 +23,17 @@ class SideNav extends Component {
 				});
 			});
 	}
-  sendWineSelected() {
+  // wine selected in WineNav
+  sendWineSelected(evt) {
+    const wineId = evt.target.id;
     // place holder for function to come
+    console.log('clicked send wine selected',wineId)
+    this.setState({
+      wineSelected:  wineId
+    });
+    this.props.getWineSelected(wineId);
   }
+
   render() {
 		return (
       <div className="SideNav">
@@ -32,7 +41,8 @@ class SideNav extends Component {
 
         {/* condition statement to check for the wine data loaded */}
 				{this.state.wineDataLoaded ? (
-					<WineNav wines={this.state.wines} sendWineSelected={this.sendWineSelected} />
+					<WineNav wines={this.state.wines} sendWineSelected={this.sendWineSelected}
+           />
 				) : (
 					<p>loading</p>
 				)}

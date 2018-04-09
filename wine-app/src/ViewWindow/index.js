@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import WineList from '../WineList';
 import AddWine from '../AddWine';
+import WineDetail from '../WineDetail';
 import EditWine from '../EditWine';
 
 class ViewWindow extends Component {
@@ -8,7 +9,6 @@ class ViewWindow extends Component {
   constructor(props) {
     super()
     this.state = {
-      view: 'add',
       newWineName: '',
       newWineYear: '',
       newWineGrapes: '',
@@ -85,9 +85,9 @@ class ViewWindow extends Component {
   }
   render () {
     let wineView = null;
-    if (this.state.view === 'list') {
+    if (this.props.view === 'list') {
       wineView = <WineList />;
-    } else if (this.state.view === 'add') {
+    } else if (this.props.view === 'add') {
       wineView = <AddWine createWine={this.createWine}
         handleNewWineName={this.handleNewWineName}
         handleNewWineYear={this.handleNewWineYear}
@@ -98,6 +98,8 @@ class ViewWindow extends Component {
         handleNewWinePicture={this.handleNewWinePicture}
         handleNewWinePrice={this.handleNewWinePrice}
       />;
+    } else if (this.props.view === 'detail') {
+      wineView = <WineDetail />;
     }
 
     return (
